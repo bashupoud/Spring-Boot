@@ -16,7 +16,9 @@ public class CourseCategoryService {
     public List<CourseCategory> getAllCourseCategory() {
 
         List<CourseCategory> courseCategories = new ArrayList<>();
+
         return courseCategoryRepo.findAll();//.forEach(courseCategories::add);
+        // SELECt * FROM COURSE_CATEGORY
 
     }
 

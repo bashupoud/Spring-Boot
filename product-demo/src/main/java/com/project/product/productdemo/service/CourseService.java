@@ -28,6 +28,7 @@ public class CourseService {
     public Optional<CourseModel> getCourse(int id) {
 
         return courseRepo.findById(id);
+        // select * from COURSE where id ='';
 
 
     }
