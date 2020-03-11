@@ -22,16 +22,10 @@ public class CourseCategoryController {
         return courseCategoryService.getAllCourseCategory();
     }
 
-   /* @PostMapping(value = "/courseCategory")
-    public void addCourseCategory(@RequestBody CourseCategory courseCategory) {
-        courseCategoryService.addCourseCategoty(courseCategory);
-
-    }*/
-
     @PostMapping(value = "/addCourseCategory")
     public List<CourseCategory> addCourseCategory(@RequestBody CourseCategory courseCategory) {
         List<CourseModel> cm = new ArrayList<>();
-        if(courseCategory.getCourseModels().size() >0){
+        if (courseCategory.getCourseModels().size() > 0) {
             for (int i = 0; i < courseCategory.getCourseModels().size(); i++) {
                 CourseModel courseModel = new CourseModel();
                 courseModel.setCourseDescription(courseCategory.getCourseModels().get(i).getCourseDescription());
@@ -42,7 +36,6 @@ public class CourseCategoryController {
         CourseCategory courseCategory1 = new CourseCategory();
         courseCategory1.setName(courseCategory.getName());
         courseCategory1.setCourseModels(cm);
-
 
 
         //Save Course Category

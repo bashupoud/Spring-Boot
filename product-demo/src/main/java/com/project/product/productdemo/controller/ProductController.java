@@ -26,15 +26,23 @@ public class ProductController {
     }
 
     @PostMapping("/addMoreProducts")
-    public void addOneProduct(@RequestBody List<Product> products) {
+    public void addManyProduct(@RequestBody List<Product> products) {
+        productService.addManyProduct(products);
 
     }
 
 
     @DeleteMapping("/{productName}")
     public void deleteProduct(@PathVariable String productName) {
+        productService.deleteByProductName(productName);
 
     }
+
+    @GetMapping("/{productName}/{productDescription}")
+    public List<Product> findByProductNameAndDescription(@PathVariable String productName, String productDescription) {
+        return productService.findByProductAndDescription(productName, productDescription);
+    }
+
 
     @DeleteMapping("/{id}")
     public void deleteProductById(@PathVariable int id) {
