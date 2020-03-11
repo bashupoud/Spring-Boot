@@ -1,35 +1,55 @@
 package com.project.product.productdemo.service;
 
-import com.project.product.productdemo.model.Course;
-import com.project.product.productdemo.repository.CourseRepository;
+import com.project.product.productdemo.model.CourseModel;
+import com.project.product.productdemo.repository.CourseRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class CourseService {
-    public List<Course> getAllCourse() {
 
-        List<Course> courseList = new ArrayList<>(Arrays.asList(
-                new Course(1, "Spring Boot", "Learning Spring Bootr"),
-                new Course(2, "Java", "Learning Java"),
-                new Course(3, "Web Development", "Learning Web Development"),
-                new Course(4, "JPA", "Learning JPA"),
-                new Course(5, "Database", "Learning h2-database"),
-                new Course(6, "Rest API", "Learning Rest Services"),
-                new Course(7, "React", "Learning React")));
+    @Autowired
+    private CourseRepo courseRepo;
 
 
-        return courseList;
+    public List<CourseModel> getAllCourses() {
+
+        List<CourseModel> courseModel = new ArrayList<>();
+        courseRepo.findAll()
+                .forEach(courseModel::add);
+        return courseModel;
 
     }
 
+    public Optional<CourseModel> getCourse(int id) {
 
-    public void addAllCourse(Course course) {
-        CourseRepository courseRepository = new CourseRepository();
-        courseRepository.save(course);
+        return courseRepo.findById(id);
+        // select * from COURSE where id ='';
 
 
     }
+
+    public void addCourse(CourseModel course) {
+
+        courseRepo.save(course);
+    }
+
+    public void updateCourse(CourseModel course) {
+
+        if (courseRepo.existsById(course.getCourseId())) {
+            courseRepo.save(course);
+        }
+
+    }
+
+    public void deleteCourse(int id) {
+
+        courseRepo.deleteById(id);
+
+    }
+
 }

@@ -22,4 +22,18 @@ public class ProductService {
     public void addProduct(Product product) {
         repository.save(product);
     }
+
+    public void addManyProduct(List<Product> products) {
+        repository.saveAll(products);
+    }
+
+    public void deleteByProductName(String productName) {
+        repository.deleteByProductName(productName);
+
+        //productName
+    }
+
+    public  List<Product>  findByProductAndDescription(String productName, String productDescription){
+        return repository.findByProductCategoryAndProductDescription(productName,productDescription);
+    }
 }

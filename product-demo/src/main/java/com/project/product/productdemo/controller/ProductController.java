@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/product-demo")
 public class ProductController {
 
     @Autowired
@@ -23,10 +24,34 @@ public class ProductController {
     public void addProduct(@RequestBody Product product) {
         productService.addProduct(product);
     }
-              /*List<Product> productList = new ArrayList<>(Arrays.asList(
-                new Product("1", "speaker", "bluetooth speaker","gadget"),
-                new Product("2", "monitor", "LED","gadget"),
-                new Product("3", "tv", "4k","gadget")));*/
+
+    @PostMapping("/addMoreProducts")
+    public void addManyProduct(@RequestBody List<Product> products) {
+        productService.addManyProduct(products);
+
+    }
 
 
+    @DeleteMapping("/{productName}")
+    public void deleteProduct(@PathVariable String productName) {
+        productService.deleteByProductName(productName);
+
+    }
+
+    @GetMapping("/{productName}/{productDescription}")
+    public List<Product> findByProductNameAndDescription(@PathVariable String productName, String productDescription) {
+        return productService.findByProductAndDescription(productName, productDescription);
+    }
+
+
+    @DeleteMapping("/{id}")
+    public void deleteProductById(@PathVariable int id) {
+        // TODO: implement
+
+    }
+
+
+    @PutMapping("/{id}")
+    public void updateProduct(int id) {
+    }
 }
