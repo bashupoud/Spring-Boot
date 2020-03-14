@@ -36,7 +36,7 @@ class ProductDemoApplicationTests {
         Stream<Product> product1 = productList.stream().filter(prd -> prd.getProductCategory().equals("Test First Product Category"));
         List<Product> list = product1.collect(Collectors.toList());
         int size = list.size();
-        Assert.assertEquals(size, 1);
+        Assert.assertEquals(1, size);
         // Delete whatever you presist
         productController.deleteProduct(product.getProductName());
         List<Product> prdList = productController.getAllProduct();
@@ -96,10 +96,10 @@ class ProductDemoApplicationTests {
         product.setProductCategory("Category");
         product.setProductDescription("Description");
         product.setProductName("Name");
-       //productController.addProduct(product);
+        productController.addProduct(product);
 
-        List<Product> productList = productController.findByProductNameAndDescription(product.getProductName(),product.getProductDescription());
-        System.out.println("Product List Size: "+productList.size());
+        List<Product> productList = productController.findByProductNameAndDescription(product.getProductName(), product.getProductDescription());
+        System.out.println("Product List Size: " + productList.size());
 
     }
 

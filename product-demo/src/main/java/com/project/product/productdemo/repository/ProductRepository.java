@@ -20,7 +20,7 @@ public interface ProductRepository extends JpaRepository<Product, String> {
     List<Product> findByProductNameAndProductDescription(@Param("name") String productName, @Param("description") String productDescription);
 
     // with Native Query
-    @Query(value = "SELECT * FROM SIMPLE_PRODUCT p WHERE p.product_Name = :productName AND p.product_Description = :productDescription"
+    @Query(value = "SELECT * FROM simple_product p WHERE p.product_name = :productName AND p.product_description = :productDescription"
             , nativeQuery = true)
     List<Product> findByProductCategoryAndProductDescription(@Param("productName") String productName, @Param("productDescription") String productDescription);
 }
