@@ -28,6 +28,38 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="address" class="col-form-label">Address</label>
+                        <input type="text" th:field="*{address}" class="form-control" id="address" placeholder="Address">
+                        <span th:if="${#fields.hasErrors('address')}" th:errors="*{email}" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="addressTwo" class="col-form-label">Street Address</label>
+                        <input type="text" th:field="*{addressTwo}" class="form-control" id="addressTwo" placeholder="Street Address">
+                        <span th:if="${#fields.hasErrors('addressTwo')}" th:errors="*{address}" class="text-danger"></span>
+                    </div>
+                </div>
+                <div>
+                    <div class = "row" >
+                        <div class="form-group col-md-6">
+                            <label for="city" class="col-form-label">City</label>
+                            <input type="text" th:field="*{city}" class="form-control" id="city" placeholder="City">
+                            <span th:if="${#fields.hasErrors('city')}"th:errors="*{city}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="state" class="col-form-label">State</label>
+                            <input type="text" th:field="*{state}" class="form-control" id="state" placeholder="state">
+                            <span th:if="${#fields.hasErrors('state')}"th:errors="*{state}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="code" class="col-form-label">Postal Code</label>
+                            <input type="text" th:field="*{code}" class="form-control" id="code" placeholder="Postal Code">
+                            <span th:if="${#fields.hasErrors('code')}"th:errors="*{code}" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-6 mt-5">
                         <input type="submit" class="btn btn-primary" value="Update User">
                     </div>
